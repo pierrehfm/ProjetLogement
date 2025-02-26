@@ -2,10 +2,10 @@
   "name": "frontend",
   "version": "1.0.0",
   "main": "index.js",
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start --port 3001",
+    "start": "react-scripts start --port 3000",
     "build": "react-scripts build"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.2.0",
     "react-scripts": "^5.0.1"
   },
   "browserslist": {
