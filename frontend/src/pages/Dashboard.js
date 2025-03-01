@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { me, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -16,11 +16,11 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar />
-            <h1>Bienvenue {user ? `${user.firstname} ${user.lastname}` : "Utilisateur"} !</h1>
-            {user && (
+            <h1>Bienvenue {me ? `${me.firstname} ${me.lastname}` : "Utilisateur"} !</h1>
+            {me && (
                 <div>
-                    <p>Email: {user.email}</p>
-                    <p>Type de compte: {user.accountType}</p>
+                    <p>Email: {me.email}</p>
+                    <p>Type de compte: {me.accountType}</p>
                 </div>
             )}
             <Button onClick={handleLogout} text="Déconnexion" />

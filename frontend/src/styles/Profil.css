@@ -1,0 +1,16 @@
+.profil-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.profil-left {
+    width: 40%;
+    padding: 20px;
+}
+
+.profil-right {
+    width: 60%;
+    padding: 20px;
+    background-color: rgb(190, 190, 255);
+}

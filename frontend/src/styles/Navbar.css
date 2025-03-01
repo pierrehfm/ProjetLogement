@@ -1,0 +1,64 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    background: #fff;
+    color: var(--primary-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+.links {
+    display: flex;
+    gap: 40px;
+    margin-right: auto;
+}
+
+.navbar-link {
+    color: #777777;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.navbar-activeLink {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1em;
+    position: relative;
+}
+
+.authContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-activeLink::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -10%;
+    width: 120%;
+    height: 2px;
+    border-radius: 10px;
+    background-color: var(--primary-color); 
+}
+
+.profilIcon{
+    color: #777777;
+}
+
+.faProfilIcon{
+    margin-top: 4px;
+}
+
+.profilIconActive{
+    margin-top: 4px;
+    color: var(--primary-color);
+}

@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const PrivateRoute = ({ element }) => {
-    const { me } = useContext(AuthContext);
+    const { me, loading } = useContext(AuthContext);
+
+    if (loading) return <div>Chargement...</div>; 
 
     return me ? element : <Navigate to="/login" replace />;
 };

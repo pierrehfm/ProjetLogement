@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import '../styles/Login.css';  // Assure-toi d'importer le fichier CSS
+import '../styles/Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -27,14 +27,14 @@ const Login = () => {
         <div className="login-container">
             <form className="login-form">
                 <h2>Connexion</h2>
-                <input
+                <Input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="input-field"
                 />
-                <input
+                <Input
                     type="password"
                     placeholder="Mot de passe"
                     value={password}

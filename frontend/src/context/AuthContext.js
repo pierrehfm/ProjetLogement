@@ -6,10 +6,13 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [me, setMe] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("token") || null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (token) {
             fetchMe();
+        } else {
+            setLoading(false);
         }
     }, [token]);
 
@@ -26,17 +29,20 @@ export const AuthProvider = ({ children }) => {
     };
 
     const fetchMe = async () => {
+        if (!token) return;
+        setLoading(true);
         try {
             const meData = await getMe(token);
             setMe(meData);
         } catch (error) {
-            console.error("Erreur lors de la récupération des infos utilisateur :", error);
             logout();
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <AuthContext.Provider value={{ me, token, login, logout }}>
+        <AuthContext.Provider value={{ me, token, loading, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

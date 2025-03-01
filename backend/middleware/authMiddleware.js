@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const SECRET_KEY = "secret"; // 🔒 Stocke ça dans un fichier `.env` plus tard
+const SECRET_KEY = "secret";
 
 const authMiddleware = (req, res, next) => {
     const token = req.header("Authorization");

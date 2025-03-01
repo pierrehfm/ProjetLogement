@@ -1,32 +1,38 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import Button from "./Button";
+import "../styles/Navbar.css";
+import { FaUserCircle } from "react-icons/fa"; // Icône de profil
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
+    const getLinkStyle = ({ isActive }) => isActive ? 'navbar-activeLink' : 'navbar-link';
+    const getProfilStyle = ({ isActive }) => isActive ? 'profilIconActive' : 'profilIcon';
 
     return (
-        <nav style={styles.navbar}>
-            <h2 style={styles.logo}>MonApp</h2>
-            <div style={styles.links}>
-                <Link to="/home" style={styles.link}>Accueil</Link>
-                {user && <Link to="/dashboard" style={styles.link}>Dashboard</Link>}
+        <nav className="navbar">
+            <h2 className="logo">MonApp</h2>
+            <div className="links">
+                <NavLink to="/dashboard" className={getLinkStyle} end>
+                    Dashboard
+                </NavLink>
+                <NavLink to="/mon-dossier" className={getLinkStyle}>
+                    Mon dossier
+                </NavLink>
+                <NavLink to="/calendrier" className={getLinkStyle}>
+                    Calendrier
+                </NavLink>
+                <NavLink to="/mes-demarches" className={getLinkStyle}>
+                    Mes démarches
+                </NavLink>
             </div>
-            {user ? (
-                <Button onClick={logout} text="Déconnexion" />
-            ) : (
-                <Link to="/login" style={styles.link}>Connexion</Link>
-            )}
+            <div>
+                <NavLink to="/profil" className={getProfilStyle}>
+                    <FaUserCircle size={35} className="faProfilIcon" />
+                </NavLink>
+            </div>
         </nav>
     );
-};
-
-const styles = {
-    navbar: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 20px", background: "#5a67d8", color: "white" },
-    logo: { fontSize: "1.5em", fontWeight: "bold" },
-    links: { display: "flex", gap: "15px" },
-    link: { color: "white", textDecoration: "none", fontSize: "1.2em" }
 };
 
 export default Navbar;
