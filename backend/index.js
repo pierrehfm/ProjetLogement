@@ -12,6 +12,7 @@ app.use(cors());
 // Utilisation des routes (Garde uniquement celle-ci)
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+
 // Synchronisation de la BDD
 sequelize.sync({ force: false })
     .then(() => console.log("Base de données synchronisée"))
