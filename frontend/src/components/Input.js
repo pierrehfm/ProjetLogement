@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+const StyledLabel = styled.label`
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.9rem;
+    color: #333333;
+    margin-bottom: 8px;
+    display: block; // Pour s'assurer que le label est sur une nouvelle ligne
+    font-weight: bold;
+`;
+
 const StyledInput = styled.input`
     font-family: 'Lexend Deca', sans-serif;
     width: 100%;
@@ -21,16 +30,20 @@ const StyledInput = styled.input`
     }
 `;
 
-const Input = ({ type, name, placeholder, value, onChange, disabled }) => {
+const Input = ({ label, type, name, placeholder, value, onChange, disabled }) => {
     return (
-        <StyledInput
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            disabled={disabled}
-        />
+        <div>
+            {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
+            <StyledInput
+                type={type}
+                name={name}
+                id={name}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                disabled={disabled}
+            />
+        </div>
     );
 };
 

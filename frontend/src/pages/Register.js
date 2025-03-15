@@ -29,33 +29,41 @@ const Register = () => {
         <div className="register-container">
             <form className="register-form">
                 <h2>Inscription</h2>
-                <Input type="text" name="firstname" placeholder="Prénom" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
-                <Input type="text" name="lastname" placeholder="Nom" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-                <Select
-                    name="gender"
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                    placeholder="Sélectionner un genre"
-                    options={[
-                        { value: "homme", label: "Homme" },
-                        { value: "femme", label: "Femme" },
-                        { value: "autre", label: "Autre" }
-                    ]}
-                />
-                <Input type="date" name="birthDate" placeholder="Date de naissance" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-                <Select
-                    name="accountType"
-                    value={accountType}
-                    onChange={(e) => setAccountType(e.target.value)}
-                    placeholder="Sélectionner un type"
-                    options={[
-                        { value: "acheteur", label: "Acheteur" },
-                        { value: "vendeur", label: "Vendeur" },
-                        { value: "autre", label: "Autre" }
-                    ]}
-                />
-                <Input type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <Input type="password" name="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className="input-group">
+                    <Input label="Prénom" type="text" name="firstname" placeholder="Prénom" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
+                    <Input label="Nom" type="text" name="lastname" placeholder="Nom" value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                </div>
+                <Input label="Email" type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <div className="input-group">
+                    <Select
+                        label="Genre" 
+                        name="gender"
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        placeholder="Genre"
+                        options={[
+                            { value: "homme", label: "Homme" },
+                            { value: "femme", label: "Femme" },
+                            { value: "autre", label: "Autre" }
+                        ]}
+                    />
+                    <Input label="Date de naissance" type="date" name="birthDate" placeholder="Date de naissance" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
+                </div>
+                <div className="input-group">
+                    <Select
+                        label="Type de compte" 
+                        name="accountType"
+                        value={accountType}
+                        onChange={(e) => setAccountType(e.target.value)}
+                        placeholder="Type"
+                        options={[
+                            { value: "acheteur", label: "Acheteur" },
+                            { value: "vendeur", label: "Vendeur" },
+                            { value: "autre", label: "Autre" }
+                        ]}
+                    />
+                    <Input label="Mot de passe" type="password" name="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
                 <Button text="S'inscrire" onClick={handleRegister} />
                 <div className="link">
                     <a href="/login">Déjà un compte ? Se connecter</a>

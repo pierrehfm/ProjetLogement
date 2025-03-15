@@ -1,0 +1,51 @@
+.dossier-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow-y: auto; /* Ajout du scroll uniquement sur le container */
+}
+
+.dossier-left {
+    width: 40%;
+    padding: 0 20px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.dossier-right {
+    width: 60%;
+    padding: 0 20px;
+    /* height: 100%; */
+}
+
+.dossier-container .input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.dossier-container .input-group > * {
+    flex: 1;
+}
+
+.dossier-container .input-group > *:only-child {
+    flex: 0.5;
+    margin-right: 15px;
+}
+
+.dossier-container h2 {
+    color: #333;
+    margin-bottom: -5px;
+}
+
+/* Ligne verticale */
+.vertical-line {
+    width: 2px;
+    border-radius: 10px;
+    background-color: #e4e4e4; /* Couleur de la ligne */
+    height: 100%;
+    margin: 0 15px; /* Espacement autour de la ligne */
+    margin-top: 15px;
+}

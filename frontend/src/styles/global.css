@@ -2,3 +2,27 @@ body {
     font-family: 'Lexend Deca', sans-serif;
     margin: 0px;
   }
+/* Largeur et hauteur de la scrollbar */
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+/* Arrière-plan de la scrollbar */
+::-webkit-scrollbar-track {
+  background: #FFF;
+  border-radius: 10px;
+  margin: 4px; /* Ajoute une marge pour éviter que le border-radius soit coupé */
+  padding: 2px;
+}
+
+/* La barre elle-même */
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+  border: 5px solid #FFF; /* Ajoute une bordure pour simuler un meilleur arrondi */
+}
+
+/* Effet au survol */
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

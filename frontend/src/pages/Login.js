@@ -28,6 +28,7 @@ const Login = () => {
             <form className="login-form">
                 <h2>Connexion</h2>
                 <Input
+                    label="Email"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -36,6 +37,7 @@ const Login = () => {
                     className="input-field"
                 />
                 <Input
+                    label="Mot de passe"
                     type="password"
                     name="password"
                     placeholder="Mot de passe"

@@ -2,6 +2,7 @@ const express = require("express");
 const sequelize = require("./models/index");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const dossierRoutes = require("./routes/dossierRoutes");
 
 const app = express();
 app.use(express.json());
@@ -9,9 +10,9 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
-// Utilisation des routes (Garde uniquement celle-ci)
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api", dossierRoutes);
 
 // Synchronisation de la BDD
 sequelize.sync({ force: false })

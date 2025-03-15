@@ -16,7 +16,7 @@ const Navbar = () => {
                 <NavLink to="/dashboard" className={getLinkStyle} end>
                     Dashboard
                 </NavLink>
-                <NavLink to="/mon-dossier" className={getLinkStyle}>
+                <NavLink to="/dossier" className={getLinkStyle}>
                     Mon dossier
                 </NavLink>
                 <NavLink to="/calendrier" className={getLinkStyle}>
