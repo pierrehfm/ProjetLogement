@@ -24,8 +24,18 @@ const Dossier = () => {
         researchType: "",
         researchSalary: "",
         researchBudget: "",
-        file1: null,
-        file2: null
+        photo: null,
+        proofOfIncome: null,
+        paySlip: null,
+        incomeSelfEmployment: null,
+        employerCertificate: null,
+        aidOrAllowance: null,
+        pensionRetirement: null,
+        identityProof: null,
+        adressProof: null,
+        bankingDocuments: null,
+        taxNotice: null,
+        diplomasOrCertificates: null
     });
 
     useEffect(() => {
@@ -33,8 +43,6 @@ const Dossier = () => {
             const data = await getDossier(token);
             if (data) {
                 setFormData({
-                    // field1: data.field1 || "",
-                    // field2: data.field2 || "",
                     currentAdress: data.currentAdress || "",
                     familySituation: data.familySituation || "",
                     birthPlace: data.birthPlace || "",
@@ -47,8 +55,18 @@ const Dossier = () => {
                     researchType: data.researchType || "",
                     researchSalary: data.researchSalary || "",
                     researchBudget: data.researchBudget || "",
-                    file1: data.file1 || null,
-                    file2: data.file2 || null
+                    photo: data.photo || null,
+                    proofOfIncome: data.proofOfIncome || null,
+                    paySlip: data.paySlip || null,
+                    incomeSelfEmployment: data.incomeSelfEmployment || null,
+                    employerCertificate: data.employerCertificate || null,
+                    aidOrAllowance: data.aidOrAllowance || null,
+                    pensionRetirement: data.pensionRetirement || null,
+                    identityProof: data.identityProof || null,
+                    adressProof: data.adressProof || null,
+                    bankingDocuments: data.bankingDocuments || null,
+                    taxNotice: data.taxNotice || null,
+                    diplomasOrCertificates: data.diplomasOrCertificates || null
                 });
             }
         };
@@ -62,7 +80,7 @@ const Dossier = () => {
     const handleFileChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     };
-
+    
     const handleSubmit = async () => {
         const form = new FormData();
         form.append("currentAdress", formData.currentAdress);
@@ -77,20 +95,21 @@ const Dossier = () => {
         form.append("researchType", formData.researchType);
         form.append("researchSalary", formData.researchSalary);
         form.append("researchBudget", formData.researchBudget);
-        if (formData.file1) form.append("file1", formData.file1);
-        if (formData.file2) form.append("file2", formData.file2);
+        if (formData.photo) form.append("photo", formData.photo);
+        if (formData.proofOfIncome) form.append("proofOfIncome", formData.proofOfIncome);
+        if (formData.paySlip) form.append("paySlip", formData.paySlip);
+        if (formData.incomeSelfEmployment) form.append("incomeSelfEmployment", formData.incomeSelfEmployment);
+        if (formData.employerCertificate) form.append("employerCertificate", formData.employerCertificate);
+        if (formData.aidOrAllowance) form.append("aidOrAllowance", formData.aidOrAllowance);
+        if (formData.pensionRetirement) form.append("pensionRetirement", formData.pensionRetirement);
+        if (formData.identityProof) form.append("identityProof", formData.identityProof);
+        if (formData.adressProof) form.append("adressProof", formData.adressProof);
+        if (formData.bankingDocuments) form.append("bankingDocuments", formData.bankingDocuments);
+        if (formData.taxNotice) form.append("taxNotice", formData.taxNotice);
+        if (formData.diplomasOrCertificates) form.append("diplomasOrCertificates", formData.diplomasOrCertificates);
 
         const result = await updateDossier(token, form);
         alert(result.message);
-    };
-
-    const getFileName = (filePath) => {
-        if (filePath && filePath instanceof File) {
-            return filePath.name;
-        } else if (filePath) {
-            return filePath.split("\\").pop();
-        }
-        return "";
     };
 
     return (
@@ -118,7 +137,7 @@ const Dossier = () => {
                         <Input placeholder="Téléphone" name="phone" value={formData.phone} onChange={handleChange} />
                     </div>
                     <div className="input-group">
-                        <FileButton buttonText="Photo d'identité" name="photo" onChange={handleFileChange} />
+                        <FileButton buttonText="Photo d'identité" name="photo" value={formData.photo} onChange={handleFileChange} />
                     </div>
                     <h2>Votre garant</h2>
                     <div className="input-group">
@@ -131,7 +150,7 @@ const Dossier = () => {
                         <Input placeholder="Téléphone" name="guarantorPhone" value={formData.guarantorPhone} onChange={handleChange} />
                     </div>
                     <div className="input-group">
-                        <FileButton buttonText="Justificatif de revenus" name="proofOfIncome" onChange={handleFileChange} />
+                        <FileButton buttonText="Justificatif de revenus" name="proofOfIncome" value={formData.proofOfIncome} onChange={handleFileChange} />
                     </div>
                     
                     <h2>Votre recherche</h2>
@@ -156,32 +175,32 @@ const Dossier = () => {
                     <br></br>
                 </div>
 
-                <div class="vertical-line"></div>
+                <div className="vertical-line"></div>
                         
                 <div className="dossier-right">
 
                     <h2>Mes documents</h2>
-
-                    <FileButton buttonText="Bulletin de salaire" name="proofOfIncome" onChange={handleFileChange} />
-                    <FileButton buttonText="Revenus d’activité indépendante" name="proofOfIncome" onChange={handleFileChange} />
-                    
-                    <FileButton buttonText="Attestation d’employeur" name="proofOfIncome" onChange={handleFileChange} />
-                    <FileButton buttonText="Aide ou allocation" name="proofOfIncome" onChange={handleFileChange} />
-
-                    <FileButton buttonText="Pension / retraite" name="proofOfIncome" onChange={handleFileChange} />
-                    <FileButton buttonText="Justificatifs d’identité" name="proofOfIncome" onChange={handleFileChange} />
-
-                    <FileButton buttonText="Justificatifs de domicile" name="proofOfIncome" onChange={handleFileChange} />
-                    <FileButton buttonText="Justificatifs bancaires" name="proofOfIncome" onChange={handleFileChange} />
-
-                    <FileButton buttonText="Avis d’imposition" name="proofOfIncome" onChange={handleFileChange} />
-                    <FileButton buttonText="Diplômes ou certificats" name="proofOfIncome" onChange={handleFileChange} />
-
-                    <input type="file" name="file1" onChange={handleFileChange} />
-                    {formData.file1 && <p>Fichier actuel : {getFileName(formData.file1)}</p>}
-
-                    <input type="file" name="file2" onChange={handleFileChange} />
-                    {formData.file2 && <p>Fichier actuel : {getFileName(formData.file2)}</p>}
+                        
+                    <div className="input-group">
+                        <FileButton buttonText="Bulletin de salaire" name="paySlip" value={formData.paySlip} onChange={handleFileChange} />
+                        <FileButton buttonText="Revenus d’activité indépendante" name="incomeSelfEmployment" value={formData.incomeSelfEmployment} onChange={handleFileChange} />
+                    </div>
+                    <div className="input-group">
+                        <FileButton buttonText="Attestation d’employeur" name="employerCertificate" value={formData.employerCertificate} onChange={handleFileChange} />
+                        <FileButton buttonText="Aide ou allocation" name="aidOrAllowance" value={formData.aidOrAllowance} onChange={handleFileChange} />
+                    </div>
+                    <div className="input-group">
+                        <FileButton buttonText="Pension / retraite" name="pensionRetirement" value={formData.pensionRetirement} onChange={handleFileChange} />
+                        <FileButton buttonText="Justificatifs d’identité" name="identityProof" value={formData.identityProof} onChange={handleFileChange} />
+                    </div>
+                    <div className="input-group">
+                        <FileButton buttonText="Justificatifs de domicile" name="adressProof" value={formData.adressProof} onChange={handleFileChange} />
+                        <FileButton buttonText="Justificatifs bancaires" name="bankingDocuments" value={formData.bankingDocuments} onChange={handleFileChange} />
+                    </div>
+                    <div className="input-group">
+                        <FileButton buttonText="Avis d’imposition" name="taxNotice" value={formData.taxNotice} onChange={handleFileChange} />
+                        <FileButton buttonText="Diplômes ou certificats" name="diplomasOrCertificates" value={formData.diplomasOrCertificates} onChange={handleFileChange} />
+                    </div>
 
                     <Button onClick={handleSubmit} text="Enregistrer" />
                 </div>

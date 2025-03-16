@@ -11,7 +11,7 @@ export const getDossier = async (token) => {
 export const updateDossier = async (token, formData) => {
     const response = await fetch(`${API_URL}/dossier`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${token}` }, // Pas de Content-Type ici !
+        headers: { Authorization: `Bearer ${token}` },
         body: formData
     });
     return response.json();

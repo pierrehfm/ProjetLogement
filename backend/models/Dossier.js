@@ -24,8 +24,18 @@ const Dossier = sequelize.define("Dossier", {
     researchType: { type: DataTypes.STRING },
     researchSalary: { type: DataTypes.DECIMAL(10, 2) },
     researchBudget: { type: DataTypes.DECIMAL(10, 2) },
-    file1: { type: DataTypes.STRING },
-    file2: { type: DataTypes.STRING },
+    photo: { type: DataTypes.STRING },
+    proofOfIncome: { type: DataTypes.STRING },
+    paySlip: { type: DataTypes.STRING },
+    incomeSelfEmployment: { type: DataTypes.STRING },
+    employerCertificate: { type: DataTypes.STRING },
+    aidOrAllowance: { type: DataTypes.STRING },
+    pensionRetirement: { type: DataTypes.STRING },
+    identityProof: { type: DataTypes.STRING },
+    adressProof: { type: DataTypes.STRING },
+    bankingDocuments: { type: DataTypes.STRING },
+    taxNotice: { type: DataTypes.STRING },
+    diplomasOrCertificates: { type: DataTypes.STRING }
 });
 
 module.exports = Dossier;

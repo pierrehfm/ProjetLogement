@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const sequelize = require("./models/index");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -13,6 +14,8 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", dossierRoutes);
+
+app.use('/uploads', express.static(path.join(__dirname, 'usersDossiers')));
 
 // Synchronisation de la BDD
 sequelize.sync({ force: false })

@@ -12,7 +12,6 @@ const getDossier = async (req, res) => {
 
 const updateDossier = async (req, res) => {
     try {
-        // const { field1, field2 } = req.body;
         const { 
             currentAdress,
             familySituation,
@@ -27,9 +26,19 @@ const updateDossier = async (req, res) => {
             researchSalary,
             researchBudget
         } = req.body;
-        const file1 = req.files?.file1 ? req.files.file1[0].path : null;
-        const file2 = req.files?.file2 ? req.files.file2[0].path : null;
-
+        const photo = req.files?.photo ? req.files.photo[0].path : null;
+        const proofOfIncome = req.files?.proofOfIncome ? req.files.proofOfIncome[0].path : null;
+        const paySlip = req.files?.paySlip ? req.files.paySlip[0].path : null;
+        const incomeSelfEmployment = req.files?.incomeSelfEmployment ? req.files.incomeSelfEmployment[0].path : null;
+        const employerCertificate = req.files?.employerCertificate ? req.files.employerCertificate[0].path : null;
+        const aidOrAllowance = req.files?.aidOrAllowance ? req.files.aidOrAllowance[0].path : null;
+        const pensionRetirement = req.files?.pensionRetirement ? req.files.pensionRetirement[0].path : null;
+        const identityProof = req.files?.identityProof ? req.files.identityProof[0].path : null;
+        const adressProof = req.files?.adressProof ? req.files.adressProof[0].path : null;
+        const bankingDocuments = req.files?.bankingDocuments ? req.files.bankingDocuments[0].path : null;
+        const taxNotice = req.files?.taxNotice ? req.files.taxNotice[0].path : null;
+        const diplomasOrCertificates = req.files?.diplomasOrCertificates ? req.files.diplomasOrCertificates[0].path : null;
+        
         let dossier = await Dossier.findOne({ where: { userId: req.user.id } });
 
         if (!dossier) {
@@ -47,8 +56,18 @@ const updateDossier = async (req, res) => {
                 researchType,
                 researchSalary,
                 researchBudget,
-                file1,
-                file2
+                photo,
+                proofOfIncome,
+                paySlip,
+                incomeSelfEmployment,
+                employerCertificate,
+                aidOrAllowance,
+                pensionRetirement,
+                identityProof,
+                adressProof,
+                bankingDocuments,
+                taxNotice,
+                diplomasOrCertificates
             });
         } else {
             await dossier.update({
@@ -64,8 +83,18 @@ const updateDossier = async (req, res) => {
                 researchType,
                 researchSalary,
                 researchBudget,
-                file1: file1 || dossier.file1,
-                file2: file2 || dossier.file2
+                photo: photo || dossier.photo,
+                proofOfIncome: proofOfIncome || dossier.proofOfIncome,
+                paySlip: paySlip || dossier.paySlip,
+                incomeSelfEmployment: incomeSelfEmployment || dossier.incomeSelfEmployment,
+                employerCertificate: employerCertificate || dossier.employerCertificate,
+                aidOrAllowance: aidOrAllowance || dossier.aidOrAllowance,
+                pensionRetirement: pensionRetirement || dossier.pensionRetirement,
+                identityProof: identityProof || dossier.identityProof,
+                adressProof: adressProof || dossier.adressProof,
+                bankingDocuments: bankingDocuments || dossier.bankingDocuments,
+                taxNotice: taxNotice || dossier.taxNotice,
+                diplomasOrCertificates: diplomasOrCertificates || dossier.diplomasOrCertificates,
             });
         }
 
