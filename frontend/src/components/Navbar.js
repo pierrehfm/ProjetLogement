@@ -5,7 +5,7 @@ import "../styles/Navbar.css";
 import { FaUserCircle } from "react-icons/fa"; // Icône de profil
 
 const Navbar = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { me } = useContext(AuthContext);
     const getLinkStyle = ({ isActive }) => isActive ? 'navbar-activeLink' : 'navbar-link';
     const getProfilStyle = ({ isActive }) => isActive ? 'profilIconActive' : 'profilIcon';
 
@@ -13,18 +13,15 @@ const Navbar = () => {
         <nav className="navbar">
             <h2 className="logo">MonApp</h2>
             <div className="links">
-                <NavLink to="/dashboard" className={getLinkStyle} end>
-                    Dashboard
-                </NavLink>
-                <NavLink to="/dossier" className={getLinkStyle}>
-                    Mon dossier
-                </NavLink>
-                <NavLink to="/calendrier" className={getLinkStyle}>
-                    Calendrier
-                </NavLink>
-                <NavLink to="/mes-demarches" className={getLinkStyle}>
-                    Mes démarches
-                </NavLink>
+                <NavLink to="/dashboard" className={getLinkStyle}>Dashboard</NavLink>
+                {me.accountType === "acheteur" && (
+                    <NavLink to="/dossier" className={getLinkStyle}>Mon dossier</NavLink>
+                )}
+                {me.accountType === "vendeur" && (
+                    <NavLink to="/dossiers" className={getLinkStyle}>Les dossiers</NavLink>
+                )}
+                <NavLink to="/calendrier" className={getLinkStyle}>Calendrier</NavLink>
+                <NavLink to="/mes-demarches" className={getLinkStyle}>Mes démarches</NavLink>
             </div>
             <div>
                 <NavLink to="/profil" className={getProfilStyle}>

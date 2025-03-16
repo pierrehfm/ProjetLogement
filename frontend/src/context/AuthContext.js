@@ -7,6 +7,8 @@ export const AuthProvider = ({ children }) => {
     const [me, setMe] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("token") || null);
     const [loading, setLoading] = useState(true);
+    console.log("test 1");
+    console.log(me);
 
     useEffect(() => {
         if (token) {
