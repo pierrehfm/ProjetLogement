@@ -41,11 +41,10 @@ const CalendarPage = () => {
     return (
         <div>
             <Navbar />
-            <h1>Bienvenue {me ? `${me.firstname} ${me.lastname}` : "Utilisateur"} !</h1>
+            {/* <h1>Bienvenue {me ? `${me.firstname} ${me.lastname}` : "Utilisateur"} !</h1> */}
 
-            <div className="dashboard-container">
+            <div className="calendar-container">
                 {/* Calendrier à gauche */}
-                <div className="calendar-container">
                     <Calendar
                         onChange={handleDateChange}
                         value={selectedDate}
@@ -55,7 +54,6 @@ const CalendarPage = () => {
                         nextLabel="›"
                         tileClassName={tileClassName}
                     />
-                </div>
 
                 {/* Formulaire à droite pour ajouter un événement */}
                 <div className="form-container">
