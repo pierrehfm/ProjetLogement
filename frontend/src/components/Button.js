@@ -12,8 +12,8 @@ const StyledButton = styled.button`
     font-size: 1rem;
 `;
 
-const Button = ({ text, onClick }) => (
-    <StyledButton onClick={onClick}>
+const Button = ({ text, onClick, style }) => (
+    <StyledButton onClick={onClick} style={style}>
       {text}
     </StyledButton>
   );
