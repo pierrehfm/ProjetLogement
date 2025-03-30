@@ -8,12 +8,15 @@ import Calendar from "./pages/global/Calendar";
 import Profil from "./pages/global/Profil";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import Navbar from "./components/Navbar"; // ⬅️ Importation de la Navbar
 
 const App = () => {
     return (
         <AuthProvider>
             <Router>
+                <Navbar />  {/* ⬅️ Ajout de la Navbar ici */}
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
