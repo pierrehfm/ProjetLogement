@@ -4,6 +4,7 @@ const sequelize = require("./models/index");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const dossierRoutes = require("./routes/dossierRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api", appointmentRoutes);
 app.use("/api", dossierRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'usersDossiers')));
