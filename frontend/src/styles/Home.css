@@ -1,0 +1,102 @@
+/* Style du header */
+.header {
+    background-color: #E0E0FF;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.header p {
+    color: #666;
+}
+
+/* Barre de Connexion et Inscription */
+.auth-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.auth-links button {
+    padding: 10px 20px;
+    background-color: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-links button:hover {
+    background-color: #4c51bf;
+}
+
+/* Image en background */
+.hero-image {
+    width: 100%;
+    height: 300px;
+    background: url('../../public/images/dossier-bg.jpg') center/cover no-repeat;
+}
+
+/* Section dossier */
+.dossier-section {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.dossier-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dossier-icon {
+    width: 60px;
+    height: 60px;
+    background: #E0E0E0;
+    margin-right: 15px;
+}
+
+.dossier-text h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.dossier-text p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Partenaires */
+.partners {
+    text-align: center;
+    background: white;
+    padding: 40px 0;
+}
+
+.partners img {
+    height: 50px;
+    margin: 0 15px;
+}
+
+/* Footer */
+.footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -16,6 +16,7 @@ const App = () => {
         <AuthProvider>
             <Router>
                 <Routes>
+                    <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/dossier/:id" element={<DossierView />} />
