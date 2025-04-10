@@ -12,7 +12,17 @@
 .profil-right {
     width: 60%;
     padding: 20px;
-    background-color: rgb(190, 190, 255);
+}
+
+.profil-left .input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.profil-left .input-group > * {
+    flex: 1;
 }
 
 .profil-container h2 {

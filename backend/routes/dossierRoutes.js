@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getDossier, updateDossier } = require('../controllers/dossierController');
+const { getDossier, updateDossier, getAllDossiers, getPublicDossier } = require('../controllers/dossierController');
 const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/uploadMiddleware");
 
@@ -18,7 +18,8 @@ router.post("/dossier", authMiddleware, upload.fields([
     { name: "bankingDocuments" },
     { name: "taxNotice" },
     { name: "diplomasOrCertificates" }
-]), updateDossier); // Créer ou MAJ
-
+]), updateDossier);
+router.get("/alldossiers", authMiddleware, getAllDossiers);
+router.get("/dossier/:id?", getPublicDossier);
 
 module.exports = router;

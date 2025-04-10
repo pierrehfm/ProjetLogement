@@ -1,9 +1,15 @@
-const Dossier = require("../models/Dossier");
+const { Dossier, User } = require("../models/associations");
 
 const getDossier = async (req, res) => {
     try {
-        const dossier = await Dossier.findOne({ where: { userId: req.user.id } });
-        res.json(dossier || {});
+        const userId = req.params.id || req.user.id; // Si un ID est passé, on l'utilise, sinon, c'est l'utilisateur connecté
+        const dossier = await Dossier.findOne({ where: { userId } });
+
+        if (!dossier) {
+            return res.status(404).json({ message: "Dossier non trouvé" });
+        }
+
+        res.json(dossier);
     } catch (error) {
         console.error("Erreur lors de la récupération du dossier :", error);
         res.status(500).json({ message: "Erreur serveur" });
@@ -105,4 +111,39 @@ const updateDossier = async (req, res) => {
     }
 };
 
-module.exports = { getDossier, updateDossier };
+const getAllDossiers = async (req, res) => {
+    try {
+        const dossiers = await Dossier.findAll({
+            include: {
+                model: User,
+                attributes: ["firstname", "lastname"] // Récupère uniquement les champs nécessaires
+            }
+        });
+        res.json(dossiers);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des dossiers :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+const getPublicDossier = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        if (!userId) {
+            return res.status(400).json({ message: "ID utilisateur requis" });
+        }
+
+        const dossier = await Dossier.findOne({ where: { userId } });
+
+        if (!dossier) {
+            return res.status(404).json({ message: "Dossier non trouvé" });
+        }
+
+        res.json(dossier);
+    } catch (error) {
+        console.error("Erreur lors de la récupération du dossier :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+module.exports = { getDossier, updateDossier, getAllDossiers, getPublicDossier };

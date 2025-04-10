@@ -23,13 +23,13 @@
 
 .navbar-link {
     color: #777777;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 1em;
 }
 
 .navbar-activeLink {
     color: var(--primary-color);
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 1em;
     position: relative;
 }

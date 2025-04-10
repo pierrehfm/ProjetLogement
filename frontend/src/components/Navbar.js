@@ -11,33 +11,22 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            {/* Logo MonApp qui redirige vers la page Home */}
-            <NavLink to="/" className="logo">
-                MonApp
-            </NavLink>
+            <h2 className="logo">MonApp</h2>
             <div className="links">
                 <NavLink to="/dashboard" className={getLinkStyle}>Dashboard</NavLink>
-                {me?.accountType === "acheteur" && (
+                {me.accountType === "acheteur" && (
                     <NavLink to="/dossier" className={getLinkStyle}>Mon dossier</NavLink>
                 )}
-                {me?.accountType === "vendeur" && (
+                {me.accountType === "vendeur" && (
                     <NavLink to="/dossiers" className={getLinkStyle}>Les dossiers</NavLink>
                 )}
                 <NavLink to="/calendrier" className={getLinkStyle}>Calendrier</NavLink>
                 <NavLink to="/mes-demarches" className={getLinkStyle}>Mes démarches</NavLink>
             </div>
-
-            <div className="auth-links">
-                {me ? (
-                    <NavLink to="/profil" className={getProfilStyle}>
-                        <FaUserCircle size={35} className="faProfilIcon" />
-                    </NavLink>
-                ) : (
-                    <>
-                        <NavLink to="/register" className="signup-button">Inscription</NavLink>
-                        <NavLink to="/login" className="login-button">Connexion</NavLink>
-                    </>
-                )}
+            <div>
+                <NavLink to="/profil" className={getProfilStyle}>
+                    <FaUserCircle size={35} className="faProfilIcon" />
+                </NavLink>
             </div>
         </nav>
     );

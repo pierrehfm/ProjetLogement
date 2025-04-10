@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import Select from "../../components/Select";
 import "../../styles/Profil.css";
 import { updateUser } from "../../api/user";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,6 @@ const Profil = () => {
         navigate("/login");
     };
 
-    // État local pour les champs modifiables
     const [formData, setFormData] = useState({
         firstname: me?.firstname || "",
         lastname: me?.lastname || "",
@@ -24,7 +24,6 @@ const Profil = () => {
         gender: me?.gender || "",
     });
 
-    // Gestion des changements d'input
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -40,10 +39,25 @@ const Profil = () => {
             <div className="profil-container">
                 <div className="profil-left">
                     <h2>Informations personnelles</h2>
-                    <Input name="lastname" placeholder="Nom" value={formData.lastname} onChange={handleChange} />
-                    <Input name="firstname" placeholder="Prénom" value={formData.firstname} onChange={handleChange} />
-                    <Input name="birthDate" placeholder="Date de naissance" value={formData.birthDate} onChange={handleChange} />
-                    <Input name="gender" placeholder="Genre" value={formData.gender} onChange={handleChange} />
+                    <div className="input-group">
+                        <Input name="lastname" label="Nom" value={formData.lastname} onChange={handleChange} />
+                        <Input name="firstname" label="Prénom" value={formData.firstname} onChange={handleChange} />
+                    </div>
+                    <div className="input-group">
+                        <Input name="birthDate" label="Date de naissance" value={formData.birthDate} onChange={handleChange} />
+                        <Select
+                            label="Genre" 
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleChange}
+                            placeholder="Genre"
+                            options={[
+                                { value: "homme", label: "Homme" },
+                                { value: "femme", label: "Femme" },
+                                { value: "autre", label: "Autre" }
+                            ]}
+                        />
+                    </div>
                     <Button onClick={handleSubmit} text="Enregistrer" />
                 </div>
                 <div className="profil-right">

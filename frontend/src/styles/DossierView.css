@@ -1,0 +1,44 @@
+.dossier-view-container {
+    justify-items: center;
+}
+
+.dossier-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+
+.section {
+    width: 500px;
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.section h3 {
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+p {
+    margin: 8px 0;
+    color: #555555;
+}
+
+strong {
+    font-weight: bold;
+}
+
+a {
+    color: #5a67d8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline
+}
