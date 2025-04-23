@@ -120,3 +120,9 @@ abbr[title] {
     color: white;
 }
 
+.react-calendar__tile.has-appointment {
+    background: #d6e0ff;
+    color: #333;
+    border-radius: 6px;
+    font-weight: bold;
+}

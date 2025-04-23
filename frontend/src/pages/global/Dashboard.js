@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Button from "../../components/Button";
 import Navbar from "../../components/Navbar";
 import "../../styles/Dashboard.css";
+import Pub from "../../components/Pub"; 
 
 const Dashboard = () => {
     const { me } = useContext(AuthContext);
@@ -24,7 +25,9 @@ const Dashboard = () => {
                         Conditions générales d'utilisation<br/>
                         Nous contacter
                     </div>
-                    <div className="side-div">PUB</div>
+                    <div className="side-div">
+                        <Pub />
+                    </div>
                 </div>
             </div>
         </div>

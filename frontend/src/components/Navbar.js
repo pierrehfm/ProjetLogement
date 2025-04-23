@@ -20,8 +20,15 @@ const Navbar = () => {
                 {me.accountType === "vendeur" && (
                     <NavLink to="/dossiers" className={getLinkStyle}>Les dossiers</NavLink>
                 )}
-                <NavLink to="/calendrier" className={getLinkStyle}>Calendrier</NavLink>
-                <NavLink to="/mes-demarches" className={getLinkStyle}>Mes démarches</NavLink>
+                {me.accountType === "vendeur" || me.accountType === "acheteur" && (
+                    <NavLink to="/calendrier" className={getLinkStyle}>Calendrier</NavLink>
+                )}
+                {me.accountType === "vendeur" || me.accountType === "acheteur" && (
+                    <NavLink to="/mes-demarches" className={getLinkStyle}>Mes démarches</NavLink>
+                )}
+                {me.accountType === "admin" && (
+                    <NavLink to="/gestioncomptes" className={getLinkStyle}>Gerer les comptes</NavLink>
+                )}
             </div>
             <div>
                 <NavLink to="/profil" className={getProfilStyle}>

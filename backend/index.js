@@ -4,6 +4,7 @@ const sequelize = require("./models/index");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const dossierRoutes = require("./routes/dossierRoutes");
+const pubRoutes = require("./routes/pubRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 
 const app = express();
@@ -16,8 +17,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", appointmentRoutes);
 app.use("/api", dossierRoutes);
+app.use("/api", pubRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'usersDossiers')));
+app.use('/uploadsPub', express.static(path.join(__dirname, 'pub')));
 
 // Synchronisation de la BDD
 sequelize.sync({ force: false })

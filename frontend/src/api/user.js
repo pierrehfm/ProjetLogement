@@ -12,3 +12,11 @@ export const updateUser = async (token, userData) => {
 
     return response.json();
 };
+
+export const getAllUsers = async (token) => {
+    const response = await fetch(`${API_URL}/user/allusers`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.json();
+};

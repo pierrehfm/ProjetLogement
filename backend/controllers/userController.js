@@ -26,4 +26,14 @@ const update = async (req, res) => {
     }
 };
 
-module.exports = { update };
+const getAllUsers = async (req, res) => {
+    try {
+        const listUsers = await User.findAll();
+        res.json(listUsers);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des utilisateurs :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+module.exports = { update, getAllUsers };

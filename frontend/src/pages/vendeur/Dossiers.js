@@ -18,7 +18,7 @@ const Dossiers = () => {
         location: "",
         scoreMin: ""
     });
-    const [filterVisible, setFilterVisible] = useState(false); // Pour afficher/masquer le filtre
+    const [filterVisible, setFilterVisible] = useState(false);
 
     useEffect(() => {
         const fetchDossiers = async () => {
