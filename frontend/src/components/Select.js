@@ -28,11 +28,11 @@ const StyledSelect = styled.select`
     }
 `;
 
-const Select = ({ label, name, value, onChange, options, placeholder, disabled }) => {
+const Select = ({ label, name, value, onChange, options, placeholder, disabled, style }) => {
     return (
         <div>
             {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
-            <StyledSelect name={name} value={value} onChange={onChange} disabled={disabled}>
+            <StyledSelect name={name} value={value} onChange={onChange} disabled={disabled} style={style}>
                 {placeholder && <option value="" disabled hidden>{placeholder}</option>}
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>

@@ -1,4 +1,4 @@
-.users-container {
+.dossiers-container {
     /* display: flex; */
     /* display: flex; */
     width: (100% - 40px);
@@ -61,15 +61,15 @@ table tr:nth-child(even) {
     background-color: #f4f6fb;
 }
 
-.users-filter-container {
+.filter-container {
     display: flex;
     width: 100%;
 }
 
-.user-search-bar input {
+.search-bar input {
     padding: 11px;
     width: 300px;
-    margin-bottom: 15px;
+    margin-left: 15px;
 }
 
 .filters {
@@ -78,7 +78,7 @@ table tr:nth-child(even) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 700px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permet aux éléments de se répartir sur plusieurs lignes */
 }
 
 .filters input {
@@ -86,8 +86,3 @@ table tr:nth-child(even) {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-
-.button-group {
-    display: flex;
-    gap: 10px;
-  }

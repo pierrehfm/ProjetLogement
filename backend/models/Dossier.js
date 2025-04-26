@@ -24,6 +24,7 @@ const Dossier = sequelize.define("Dossier", {
     researchType: { type: DataTypes.STRING },
     researchSalary: { type: DataTypes.DECIMAL(10, 2) },
     researchBudget: { type: DataTypes.DECIMAL(10, 2) },
+    dossierScore: { type: DataTypes.INTEGER },
     photo: { type: DataTypes.STRING },
     proofOfIncome: { type: DataTypes.STRING },
     paySlip: { type: DataTypes.STRING },

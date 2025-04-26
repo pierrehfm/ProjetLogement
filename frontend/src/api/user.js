@@ -7,7 +7,20 @@ export const updateUser = async (token, userData) => {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(userData) // Envoyer les nouvelles valeurs
+        body: JSON.stringify(userData)
+    });
+
+    return response.json();
+};
+
+export const updateUserType = async (token, userData) => {
+    const response = await fetch(`${API_URL}/user/updateusertype`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
     });
 
     return response.json();

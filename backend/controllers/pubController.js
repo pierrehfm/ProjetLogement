@@ -1,13 +1,11 @@
 const Pub = require("../models/pub");
+const fs = require('fs');
+const path = require('path');
 
 const getPub = async (req, res) => {
     try {
         const userId = req.user.id;
         const pub = await Pub.findOne({ where: { userId } });
-
-        if (!pub) {
-            return res.status(404).json({ message: "Pub non trouvé" });
-        }
 
         res.json(pub);
     } catch (error) {
@@ -30,6 +28,15 @@ const updatePub = async (req, res) => {
                 image,
             });
         } else {
+            if (image && pub.image && pub.image !== image) {
+                const oldImagePath = path.resolve(pub.image);
+                fs.unlink(oldImagePath, (err) => {
+                    if (err) {
+                        console.error("Erreur lors de la suppression de l'ancienne image :", err);
+                    }
+                });
+            }
+
             await pub.update({
                 link,
                 image: image || pub.image,

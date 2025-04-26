@@ -1,8 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Navbar from "../../components/Navbar";
-import "../../styles/Dashboard.css";
-import { getAllUsers } from "../../api/user";
+import "../../styles/listUsers.css";
+import Select from "../../components/Select";
+import { getAllUsers, updateUserType } from "../../api/user";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 
@@ -40,13 +41,25 @@ const GestionComptes = () => {
         setSearch(event.target.value);
     };
 
+    const handleTypeChange = async (userId, newType) => {
+        try {
+            await updateUserType(token, { userId, accountType: newType });
+        
+            setUsers(prevUsers => prevUsers.map(user =>
+                user.id === userId ? { ...user, type: newType } : user
+            ));
+        } catch (error) {
+            console.error("Erreur lors du changement de rôle :", error);
+        }
+    };
+
     return (
         <div>
             <Navbar />
-            <div className="dossiers-container">
+            <div className="users-container">
                 <h1>Liste des Utilisateurs</h1>
-                <div className="filter-container">
-                    <div className="search-bar">
+                <div className="users-filter-container">
+                    <div className="user-search-bar">
                         <Input
                             type="text"
                             placeholder="Rechercher..."
@@ -71,16 +84,32 @@ const GestionComptes = () => {
                                 <tr key={user.id}>
                                     <td>{user.firstname} {user.lastname}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.createdAt}</td>
+                                    <td>{new Date(user.createdAt).toLocaleDateString('fr-FR')}</td>
                                     <td>
-                                        <Button 
-                                            text="Suspendre" 
-                                            style={{ padding: "5px", backgroundColor: "#ffc906"}}
+                                        <Select
+                                            value={user.accountType}
+                                            onChange={(e) => handleTypeChange(user.id, e.target.value)}
+                                            style={{ padding: "2px" }}
+                                            options={[
+                                                { value: "acheteur", label: "Acheteur" },
+                                                { value: "vendeur", label: "Vendeur" },
+                                                { value: "autre", label: "Autre" },
+                                                { value: "partenaire", label: "Partenaire" },
+                                                { value: "admin", label: "Admin" },
+                                            ]}
                                         />
-                                        <Button 
-                                            text="Supprimer" 
-                                            style={{ padding: "5px", backgroundColor: "#fb3636"}}
-                                        />
+                                    </td>
+                                    <td>
+                                        <div className="button-group">
+                                            <Button 
+                                                text="Suspendre" 
+                                                style={{ padding: "5px", backgroundColor: "#ffc906"}}
+                                            />
+                                            <Button 
+                                                text="Supprimer" 
+                                                style={{ padding: "5px", backgroundColor: "#fb3636"}}
+                                            />
+                                        </div>
                                     </td>
                                 </tr>
                             ))

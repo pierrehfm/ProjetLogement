@@ -95,38 +95,43 @@ const Profil = () => {
                         <Button onClick={handleUserSubmit} text="Enregistrer" />
                         <Button onClick={handleLogout} text="Déconnexion" />
                     </div>
+                                
+                    {me.accountType === "partenaire" && (
+                        <>
+                            <hr />
 
-                    <hr />
-
-                    <h2>Publicités</h2>
-                    <p>
-                        Choisissez une image et un lien. Cette image s’affichera sur la plateforme pour les acheteurs (de façon aléatoire). En cliquant sur l’image, on sera redirigé vers le lien que vous avez renseigné.
-                    </p>
-                    <Input
-                        name="link"
-                        placeholder="Lien"
-                        value={pubData.link}
-                        onChange={(e) => setPubData({ ...pubData, link: e.target.value })}
-                    />
-                    <br />
-                    <FileButton
-                        buttonText="Image publicitaire"
-                        name="image"
-                        value={pubData.image}
-                        onChange={(e) => setNewImage(e.target.files[0])}
-                    />
-                    <Button text="Enregistrer la publicité" onClick={handlePubSubmit} />
-
-                    {pubData.image && (
-                        <div className="imagePub">
-                            <p>Image actuelle :</p>
-                            <img
-                                src={`http://localhost:5000/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
-                                alt="Publicité actuelle"
-                                style={{ maxWidth: "300px", marginTop: "10px", borderRadius: "8px" }}
+                            <h2>Publicités</h2>
+                            <p>
+                                Choisissez une image et un lien. Cette image s’affichera sur la plateforme pour les acheteurs (de façon aléatoire). En cliquant sur l’image, on sera redirigé vers le lien que vous avez renseigné.
+                            </p>
+                            <Input
+                                name="link"
+                                placeholder="Lien"
+                                value={pubData.link}
+                                onChange={(e) => setPubData({ ...pubData, link: e.target.value })}
                             />
-                        </div>
+                            <br />
+                            <FileButton
+                                buttonText="Image publicitaire"
+                                name="image"
+                                value={pubData.image}
+                                onChange={(e) => setNewImage(e.target.files[0])}
+                            />
+                            <Button text="Enregistrer la publicité" onClick={handlePubSubmit} />
+
+                            {pubData.image && (
+                                <div className="imagePub">
+                                    <p>Image actuelle :</p>
+                                    <img
+                                        src={`http://localhost:5000/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
+                                        alt="Publicité actuelle"
+                                        style={{ maxWidth: "300px", marginTop: "10px", borderRadius: "8px" }}
+                                    />
+                                </div>
+                            )}
+                        </>
                     )}
+                    
                 </div>
 
                 <div className="profil-right">
