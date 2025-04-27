@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/Navbar.css";
-import { FaUserCircle } from "react-icons/fa"; // Icône de profil
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
     const { me } = useContext(AuthContext);
@@ -20,10 +20,10 @@ const Navbar = () => {
                 {me.accountType === "vendeur" && (
                     <NavLink to="/dossiers" className={getLinkStyle}>Les dossiers</NavLink>
                 )}
-                {me.accountType === "vendeur" || me.accountType === "acheteur" && (
+                {(me.accountType === "vendeur" || me.accountType === "acheteur") && (
                     <NavLink to="/calendrier" className={getLinkStyle}>Calendrier</NavLink>
                 )}
-                {me.accountType === "vendeur" || me.accountType === "acheteur" && (
+                {(me.accountType === "vendeur" || me.accountType === "acheteur") && (
                     <NavLink to="/mes-demarches" className={getLinkStyle}>Mes démarches</NavLink>
                 )}
                 {me.accountType === "admin" && (

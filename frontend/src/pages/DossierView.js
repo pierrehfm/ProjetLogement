@@ -20,10 +20,9 @@ const Dossier = () => {
 
     if (!formData) return <p>Chargement...</p>;
 
-    // const fileUrl = (fileName) => fileName ? `http://localhost:5000/uploads/${fileName}` : null;
     const fileUrl = (fileName) => 
         typeof fileName === "string" ? 
-        `http://localhost:5000/uploads/${fileName.replace(/usersDossiers\\/, '').replace(/\\/g, '/')}` : null;
+        `http://${process.env.REACT_APP_URL_BACKEND}/uploads/${fileName.replace(/usersDossiers\\/, '').replace(/\\/g, '/')}` : null;
     
 
     return (
@@ -59,7 +58,9 @@ const Dossier = () => {
                     key !== 'currentAdress' && key !== 'familySituation' && key !== 'birthPlace' &&
                     key !== 'phone' && key !== 'guarantorLastname' && key !== 'guarantorFirstname' &&
                     key !== 'guarantorEmail' && key !== 'guarantorPhone' && key !== 'researchLocation' &&
-                    key !== 'researchType' && key !== 'researchSalary' && key !== 'researchBudget' && value ? (
+                    key !== 'researchType' && key !== 'researchSalary' && key !== 'researchBudget' && key !== 'id'
+                    && key !== 'userId' && key !== 'dossierScore' && key !== 'createdAt' && key !== 'updatedAt'
+                    && value ? (
                         <p key={key}>
                             <strong>{key} :</strong> <a href={fileUrl(value)} target="_blank" rel="noopener noreferrer">Voir</a>
                         </p>

@@ -57,7 +57,7 @@ const FileButton = ({ name, value, onChange, buttonText }) => {
         onChange(e);
     };
 
-    const fileUrl = fileName ? `http://localhost:5000/uploads/${fileName.split('_')[0]}/${fileName}` : "";
+    const fileUrl = fileName ? `http://${process.env.REACT_APP_URL_BACKEND}/uploads/${fileName.split('_')[0]}/${fileName}` : "";
 
     return (
         <div>
