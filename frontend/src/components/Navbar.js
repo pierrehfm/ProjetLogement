@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/Navbar.css";
@@ -11,7 +11,9 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <h2 className="logo">MonApp</h2>
+            <Link to="/home">
+                <h2>LocDossier</h2>
+            </Link>
             <div className="links">
                 <NavLink to="/dashboard" className={getLinkStyle}>Dashboard</NavLink>
                 {me.accountType === "acheteur" && (
