@@ -11,11 +11,13 @@ import Profil from "./pages/global/Profil";
 import GestionComptes from "./pages/admin/gestioncomptes";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import Navbar from "./components/Navbar"; // 👈 AJOUT ICI
 
 const App = () => {
     return (
         <AuthProvider>
             <Router>
+                <Navbar /> {/* 👈 AJOUT ICI */}
                 <Routes>
                     <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="/register" element={<Register />} />
