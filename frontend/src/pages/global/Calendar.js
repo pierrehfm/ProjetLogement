@@ -4,6 +4,7 @@ import { getAppointments, createAppointment } from "../../api/appointments";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Textarea from "../../components/Textarea";
+import Navbar from "../../components/Navbar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../../styles/Calendar.css";
@@ -58,7 +59,7 @@ const CalendarPage = () => {
 
     return (
         <div>
-            
+            <Navbar />
             <div className="calendar-container">
                 <div>
                     <Calendar

@@ -1,71 +1,91 @@
+/* Navbar.css */
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  padding: 15px 40px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-family: sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    background: #fff;
+    color: var(--primary-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Logo */
-.navbar-logo, .logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  margin-right: 20px;
+.navbar h2{
+    margin-right: 20px;
 }
 
-.navbar-center {
-  display: flex;
-  gap: 25px;
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+.links {
+    display: flex;
+    gap: 40px;
+    margin-right: auto;
 }
 
 .navbar-link {
-  color: #555;
-  text-decoration: none;
-  font-size: 16px;
+    color: #777777;
+    text-decoration: none !important;
+    font-size: 1em;
 }
 
 .navbar-activeLink {
-  color: #000;
-  font-weight: bold;
-  text-decoration: underline;
+    color: var(--primary-color);
+    text-decoration: none !important;
+    font-size: 1em;
+    position: relative;
 }
 
-.navbar-right {
-  display: flex;
-  gap: 15px;
-  align-items: center;
+.authContainer {
+    display: flex;
+    gap: 10px;
 }
 
-.navbar-button {
-  padding: 8px 16px;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  text-decoration: none;
+.navbar-activeLink::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -10%;
+    width: 120%;
+    height: 2px;
+    border-radius: 10px;
+    background-color: var(--primary-color); 
 }
 
-.navbar-button.white {
-  background: #fff;
-  color: #333;
-  border: 1px solid #333;
+.profilIcon{
+    color: #777777;
 }
 
-.navbar-button.black {
-  background: #333;
-  color: #fff;
-  border: 1px solid #333;
+.faProfilIcon{
+    margin-top: 4px;
 }
 
-.profilIcon,
-.profilIconActive {
-  color: #333;
-  text-decoration: none;
+.profilIconActive{
+    margin-top: 4px;
+    color: var(--primary-color);
+}
+
+
+.auth-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.signup-button {
+    padding: 8px 12px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.login-button {
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
 }
