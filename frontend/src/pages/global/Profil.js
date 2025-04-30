@@ -32,7 +32,9 @@ const Profil = () => {
         const fetchPub = async () => {
             try {
                 const pub = await getPub(token);
-                setPubData(pub);
+                if (pub) {
+                    setPubData(pub);
+                }
             } catch (err) {
                 console.error("Erreur lors du chargement de la publicité", err);
             }
@@ -122,7 +124,7 @@ const Profil = () => {
                                 <div className="imagePub">
                                     <p>Image actuelle :</p>
                                     <img
-                                        src={`http://localhost:5000/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
+                                        src={`${process.env.REACT_APP_URL_BACKEND}/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
                                         alt="Publicité actuelle"
                                         style={{ maxWidth: "300px", marginTop: "10px", borderRadius: "8px" }}
                                     />

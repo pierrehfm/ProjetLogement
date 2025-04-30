@@ -8,9 +8,10 @@ import "../../styles/Dossier.css";
 import { getDossier, updateDossier } from "../../api/dossier";
 
 const Dossier = () => {
-    const { token } = useContext(AuthContext);
+    const { me, token } = useContext(AuthContext);
 
     const [formData, setFormData] = useState({
+        id: "",
         currentAdress: "",
         familySituation: "",
         birthPlace: "",
@@ -42,6 +43,7 @@ const Dossier = () => {
             const data = await getDossier(token);
             if (data) {
                 setFormData({
+                    id: data.id || "",
                     currentAdress: data.currentAdress || "",
                     familySituation: data.familySituation || "",
                     birthPlace: data.birthPlace || "",
@@ -179,6 +181,7 @@ const Dossier = () => {
                 <div className="dossier-right">
 
                     <h2>Mes documents</h2>
+                    <br></br>
                         
                     <div className="input-group">
                         <FileButton buttonText="Bulletin de salaire" name="paySlip" value={formData.paySlip} onChange={handleFileChange} />
@@ -202,6 +205,7 @@ const Dossier = () => {
                     </div>
 
                     <Button onClick={handleSubmit} text="Enregistrer" />
+                    <p>Lien de partage de votre dosier : {process.env.REACT_APP_URL_FRONTEND}/dossier/{me.id}</p>
                 </div>
             </div>
         </div>

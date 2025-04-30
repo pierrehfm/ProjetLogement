@@ -46,8 +46,6 @@ const Dossiers = () => {
 
     const filterDossiers = () => {
         let filtered = dossiers;
-
-        // Filtrage par le nom (prénom et nom de famille)
         if (filter.name) {
             filtered = filtered.filter(dossier =>
                 `${dossier.User.firstname} ${dossier.User.lastname}`
@@ -56,24 +54,20 @@ const Dossiers = () => {
             );
         }
 
-        // Filtrage par salaire minimum
         if (filter.salaryMin) {
             filtered = filtered.filter(dossier => dossier.researchSalary >= parseFloat(filter.salaryMin));
         }
 
-        // Filtrage par budget minimum
         if (filter.budgetMin) {
             filtered = filtered.filter(dossier => dossier.researchBudget >= parseFloat(filter.budgetMin));
         }
 
-        // Filtrage par lieu
         if (filter.location) {
             filtered = filtered.filter(dossier => dossier.researchLocation.toLowerCase().includes(filter.location.toLowerCase()));
         }
 
-        // Filtrage par score minimum
         if (filter.scoreMin) {
-            filtered = filtered.filter(dossier => dossier.score >= parseFloat(filter.scoreMin));
+            filtered = filtered.filter(dossier => dossier.dossierScore >= parseFloat(filter.scoreMin));
         }
 
         setFilteredDossiers(filtered);
@@ -170,13 +164,12 @@ const Dossiers = () => {
                                     <td>{dossier.researchSalary}</td>
                                     <td>{dossier.researchBudget}</td>
                                     <td>{dossier.researchLocation}</td>
-                                    <td>{dossier.score || "Non défini"}</td>
+                                    <td>{dossier.dossierScore || "Non défini"}</td>
                                     <td>
-                                        {/* <Button text="Voir" style={{ padding: "5px" }} /> */}
                                         <Button 
                                             text="Voir" 
                                             style={{ padding: "5px" }} 
-                                            onClick={() => window.open(`http://localhost:3000/dossier/${dossier.userId}`, "_blank")}
+                                            onClick={() => window.open(`${process.env.REACT_APP_URL_FRONTEND}/dossier/${dossier.userId}`, "_blank")}
                                             />
                                     </td>
                                 </tr>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import "../styles/Navbar.css";
@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <NavLink to="/" className="navbar-logo">MonApp</NavLink>
+                <Link to="/home" className="navbar-logo">MonApp</Link>
             </div>
 
             <div className="navbar-center">

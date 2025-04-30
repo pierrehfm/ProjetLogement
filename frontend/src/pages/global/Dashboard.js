@@ -13,18 +13,24 @@ const Dashboard = () => {
         <div>
             
             <div className="dashboard-container">
-                <div className="main-content">
+                <div className="welcome-section">
                     <h1>Bienvenue {me ? `${me.firstname} ${me.lastname}` : "Utilisateur"} !</h1>
+                    <p className="intro-text">
+                        N'hésitez pas à explorer les différentes sections pour en savoir plus !
+                    </p>
                 </div>
-                <div className="main-div">Main div (50%)</div>
-                <div className="flex-row">
-                    
-                    <div className="side-div">
-                        Notre FAQ<br/>
-                        Conditions générales d'utilisation<br/>
-                        Nous contacter
+
+                <div className="content-grid">
+                    <div className="links-card">
+                        <h2>Accès rapide</h2>
+                        <ul>
+                            <li onClick={() => navigate("/faq")} className="link-item">Notre FAQ</li>
+                            <li onClick={() => navigate("/conditions")} className="link-item">Conditions générales d'utilisation</li>
+                            <li onClick={() => navigate("/contact")} className="link-item">Nous contacter</li>
+                        </ul>
                     </div>
-                    <div className="side-div">
+
+                    <div className="pub-card">
                         <Pub />
                     </div>
                 </div>
@@ -32,6 +38,5 @@ const Dashboard = () => {
         </div>
     );
 };
-
 
 export default Dashboard;

@@ -86,7 +86,18 @@ const updateDossier = async (req, res) => {
             if (req.files?.bankingDocuments) deleteOldFile(dossier.bankingDocuments);
             if (req.files?.taxNotice) deleteOldFile(dossier.taxNotice);
             if (req.files?.diplomasOrCertificates) deleteOldFile(dossier.diplomasOrCertificates);
-
+            const photo = req.files?.photo ? req.files.photo[0].path : null;
+            const proofOfIncome = req.files?.proofOfIncome ? req.files.proofOfIncome[0].path : null;
+            const paySlip = req.files?.paySlip ? req.files.paySlip[0].path : null;
+            const incomeSelfEmployment = req.files?.incomeSelfEmployment ? req.files.incomeSelfEmployment[0].path : null;
+            const employerCertificate = req.files?.employerCertificate ? req.files.employerCertificate[0].path : null;
+            const aidOrAllowance = req.files?.aidOrAllowance ? req.files.aidOrAllowance[0].path : null;
+            const pensionRetirement = req.files?.pensionRetirement ? req.files.pensionRetirement[0].path : null;
+            const identityProof = req.files?.identityProof ? req.files.identityProof[0].path : null;
+            const adressProof = req.files?.adressProof ? req.files.adressProof[0].path : null;
+            const bankingDocuments = req.files?.bankingDocuments ? req.files.bankingDocuments[0].path : null;
+            const taxNotice = req.files?.taxNotice ? req.files.taxNotice[0].path : null;
+            const diplomasOrCertificates = req.files?.diplomasOrCertificates ? req.files.diplomasOrCertificates[0].path : null;
 
             const dossierScore = calculateDossierScore({
                 ...dossier.dataValues,
@@ -103,7 +114,6 @@ const updateDossier = async (req, res) => {
                     researchType,
                     researchSalary,
                     researchBudget,
-                    dossierScore,
                     photo: photo || dossier.photo,
                     proofOfIncome: proofOfIncome || dossier.proofOfIncome,
                     paySlip: paySlip || dossier.paySlip,
@@ -132,6 +142,7 @@ const updateDossier = async (req, res) => {
                 researchType,
                 researchSalary,
                 researchBudget,
+                dossierScore,
                 photo: req.files?.photo ? req.files.photo[0].path : dossier.photo,
                 proofOfIncome: req.files?.proofOfIncome ? req.files.proofOfIncome[0].path : dossier.proofOfIncome,
                 paySlip: req.files?.paySlip ? req.files.paySlip[0].path : dossier.paySlip,
@@ -192,7 +203,7 @@ const getPublicDossier = async (req, res) => {
 function calculateDossierScore(dossier) {
     let score = 0;
 
-    // 1. Pièces justificatives
+    // Pieces justificatives
     const documents = [
         dossier.photo,
         dossier.proofOfIncome,
@@ -209,34 +220,34 @@ function calculateDossierScore(dossier) {
     ];
 
     const uploadedDocuments = documents.filter(doc => !!doc).length;
-    score += uploadedDocuments * 5; // Chaque document rapporte 5 points
+    score += uploadedDocuments * 5;
 
-    // 2. Salaire
+    // Salaire
     const salary = parseFloat(dossier.researchSalary) || 0;
     if (salary >= 4000) score += 20;
     else if (salary >= 3000) score += 15;
     else if (salary >= 2000) score += 10;
     else if (salary > 0) score += 5;
 
-    // 3. Ratio Budget / Salaire
+    // Ratio Budget / Salaire
     const budget = parseFloat(dossier.researchBudget) || 0;
     if (salary > 0) {
         const ratio = budget / salary;
-        if (ratio <= 0.33) score += 20;  // Moins d'un tiers
+        if (ratio <= 0.33) score += 20;
         else if (ratio <= 0.5) score += 10;
         else if (ratio <= 0.7) score += 5;
-        else score -= 10; // Budget trop haut par rapport au salaire
+        else score -= 10; 
     }
 
-    // 4. Garantie (si un garant est présent)
+    // garant
     if (dossier.guarantorFirstname && dossier.guarantorLastname) {
         score += 15;
     }
 
-    // S'assurer que le score reste entre 0 et 100
     score = Math.min(100, Math.max(0, score));
+    const finalScore = +(score / 20).toFixed(1);
 
-    return score;
+    return finalScore;
 }
 
 module.exports = { getDossier, updateDossier, getAllDossiers, getPublicDossier };

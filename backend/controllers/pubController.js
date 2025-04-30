@@ -1,4 +1,4 @@
-const Pub = require("../models/pub");
+const Pub = require("../models/Pub");
 const fs = require('fs');
 const path = require('path');
 
