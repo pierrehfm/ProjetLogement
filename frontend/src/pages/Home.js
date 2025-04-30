@@ -21,6 +21,18 @@ const Home = () => {
         <div>
         {/* Header avec Connexion et Inscription */}
         <header className="header">
+            <div className="auth-links">
+            <Button 
+                text="Se connecter" 
+                style={{ padding: "10px 5px", width: "150px", backgroundColor: 'transparent', color: '#333', border: '2px solid #333' }}
+                onClick={handleLogin} 
+            />
+            <Button 
+                text="S'inscrire" 
+                style={{ padding: "10px 5px", width: "150px", backgroundColor: '#333', color: '#fff'}} 
+                onClick={handleRegister} 
+            />
+            </div>
             <h1>Mon Dossier Locataire</h1>
             <p>Construisez votre dossier en toute sécurité et de manière simplifiée</p>
         </header>

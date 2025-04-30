@@ -13,9 +13,6 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
-app.use("/api/notifications", require("./routes/notification")); //Notification
-
-
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", appointmentRoutes);

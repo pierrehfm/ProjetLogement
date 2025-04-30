@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import FileButton from "../../components/FileButton";
@@ -69,7 +70,7 @@ const Profil = () => {
 
     return (
         <div>
-            
+            <Navbar />
             <div className="profil-container">
                 <div className="profil-left">
                     <h2>Informations personnelles</h2>
