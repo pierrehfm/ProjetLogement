@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Button from "../../components/Button";
-import Navbar from "../../components/Navbar";
 import "../../styles/Dashboard.css";
 import Pub from "../../components/Pub"; 
 
@@ -12,7 +11,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Navbar />
+            
             <div className="dashboard-container">
                 <div className="welcome-section">
                     <h1>Bienvenue {me ? `${me.firstname} ${me.lastname}` : "Utilisateur"} !</h1>

@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Navbar from "../../components/Navbar";
 import "../../styles/Dossiers.css";
 import { getAllDossiers } from "../../api/dossier";
 import Button from "../../components/Button";
@@ -80,7 +79,7 @@ const Dossiers = () => {
 
     return (
         <div>
-            <Navbar />
+            
             <div className="dossiers-container">
                 <h1>Liste des Dossiers</h1>
 
