@@ -20,10 +20,15 @@ const Dossier = () => {
 
     if (!formData) return <p>Chargement...</p>;
 
-    const fileUrl = (fileName) => 
-        typeof fileName === "string" ? 
-        `${process.env.REACT_APP_URL_BACKEND}/uploads/${fileName.replace(/usersDossiers\\/, '').replace(/\\/g, '/')}` : null;
-    
+    const fileUrl = (fileName) => {
+        if (typeof fileName !== "string") return null;
+      
+        const cleanedPath = fileName
+          .replace(/^usersDossiers[\\/]/, '') // supprime 'usersDossiers/' ou 'usersDossiers\'
+          .replace(/\\/g, '/');               // remplace les \ restants par /
+      
+        return `${process.env.REACT_APP_URL_BACKEND}/uploads/${cleanedPath}`;
+      };
 
     return (
         <div className="dossier-view-container">

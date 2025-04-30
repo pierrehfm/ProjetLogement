@@ -9,7 +9,7 @@ import "../../styles/Dossier.css";
 import { getDossier, updateDossier } from "../../api/dossier";
 
 const Dossier = () => {
-    const { token } = useContext(AuthContext);
+    const { me, token } = useContext(AuthContext);
 
     const [formData, setFormData] = useState({
         id: "",
@@ -206,7 +206,7 @@ const Dossier = () => {
                     </div>
 
                     <Button onClick={handleSubmit} text="Enregistrer" />
-                    <p>Lien de partage de votre dosier : {process.env.REACT_APP_URL_FRONTEND}/dossier/{formData.id}</p>
+                    <p>Lien de partage de votre dosier : {process.env.REACT_APP_URL_FRONTEND}/dossier/{me.id}</p>
                 </div>
             </div>
         </div>
