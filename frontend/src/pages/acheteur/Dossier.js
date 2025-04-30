@@ -206,7 +206,7 @@ const Dossier = () => {
                     </div>
 
                     <Button onClick={handleSubmit} text="Enregistrer" />
-                    <p>Lien de partage de votre dosier : http://{process.env.REACT_APP_URL_FRONTEND}/dossier/{formData.id}</p>
+                    <p>Lien de partage de votre dosier : {process.env.REACT_APP_URL_FRONTEND}/dossier/{formData.id}</p>
                 </div>
             </div>
         </div>

@@ -125,7 +125,7 @@ const Profil = () => {
                                 <div className="imagePub">
                                     <p>Image actuelle :</p>
                                     <img
-                                        src={`http://${process.env.REACT_APP_URL_BACKEND}/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
+                                        src={`${process.env.REACT_APP_URL_BACKEND}/uploadsPub/${pubData.image?.replace(/^pub[\\/]/, "")}`}
                                         alt="Publicité actuelle"
                                         style={{ maxWidth: "300px", marginTop: "10px", borderRadius: "8px" }}
                                     />

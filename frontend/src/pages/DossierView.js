@@ -22,7 +22,7 @@ const Dossier = () => {
 
     const fileUrl = (fileName) => 
         typeof fileName === "string" ? 
-        `http://${process.env.REACT_APP_URL_BACKEND}/uploads/${fileName.replace(/usersDossiers\\/, '').replace(/\\/g, '/')}` : null;
+        `${process.env.REACT_APP_URL_BACKEND}/uploads/${fileName.replace(/usersDossiers\\/, '').replace(/\\/g, '/')}` : null;
     
 
     return (

@@ -170,7 +170,7 @@ const Dossiers = () => {
                                         <Button 
                                             text="Voir" 
                                             style={{ padding: "5px" }} 
-                                            onClick={() => window.open(`http://${process.env.REACT_APP_URL_FRONTEND}/dossier/${dossier.userId}`, "_blank")}
+                                            onClick={() => window.open(`${process.env.REACT_APP_URL_FRONTEND}/dossier/${dossier.userId}`, "_blank")}
                                             />
                                     </td>
                                 </tr>

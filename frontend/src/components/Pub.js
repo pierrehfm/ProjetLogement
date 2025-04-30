@@ -24,7 +24,7 @@ const Pub = () => {
 
     if (!pub) return null;
 
-    const imageSrc = `http://${process.env.REACT_APP_URL_BACKEND}/uploadsPub/${pub.image.replace(/^pub[\\/]/, "")}`;
+    const imageSrc = `${process.env.REACT_APP_URL_BACKEND}/uploadsPub/${pub.image.replace(/^pub[\\/]/, "")}`;
 
     return (
         <div className="random-pub">
